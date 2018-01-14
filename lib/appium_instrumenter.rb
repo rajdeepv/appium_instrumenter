@@ -1,8 +1,8 @@
-require "appium_instrumentor/version"
-require "appium_instrumentor/helpers"
-require "appium_instrumentor/java_keystore"
+require "appium_instrumenter/version"
+require "appium_instrumenter/helpers"
+require "appium_instrumenter/java_keystore"
 
-module AppiumInstrumentor
+module AppiumInstrumenter
   def self.instrument(test_server_apk, app_under_test)
     apk_fingerprint = fingerprint_from_apk(app_under_test)
     log "#{app_under_test} was signed with a certificate with fingerprint #{apk_fingerprint}"
@@ -22,7 +22,7 @@ module AppiumInstrumentor
       end
       puts ""
       puts "You can resign the app_under_test with #{keystores.first.location} by running:
-    appium_instrumentor resign #{app_under_test}"
+    appium_instrumenter resign #{app_under_test}"
 
       puts ""
       puts "Notice that resigning an app_under_test might break some functionality."
@@ -35,7 +35,7 @@ module AppiumInstrumentor
     FileUtils.mkdir_p File.dirname(test_server_file_name) unless File.exist? File.dirname(test_server_file_name)
 
     unsign_apk(test_server_apk)
-    test_server_manifest = File.join(File.dirname(__FILE__), 'appium_instrumentor/resources/AndroidManifest.xml')
+    test_server_manifest = File.join(File.dirname(__FILE__), 'appium_instrumenter/resources/AndroidManifest.xml')
 
     Dir.mktmpdir do |workspace_dir|
       Dir.chdir(workspace_dir) do

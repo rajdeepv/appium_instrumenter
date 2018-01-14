@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "appium_instrumentor"
+require "appium_instrumenter"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

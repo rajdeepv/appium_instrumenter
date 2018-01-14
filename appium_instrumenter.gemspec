@@ -1,11 +1,12 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "appium_instrumentor/version"
+require "appium_instrumenter/version"
+
 
 Gem::Specification.new do |spec|
   spec.name          = "appium_instrumenter"
-  spec.version       = AppiumInstrumentor::VERSION
+  spec.version       = AppiumInstrumenter::VERSION
   spec.authors       = ["Rajdeep Varma"]
   spec.email         = ["mail.rajvarma@gmail.com"]
 
