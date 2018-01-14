@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "appium_instrumentor/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "appium_instrumentor"
+  spec.name          = "appium_instrumenter"
   spec.version       = AppiumInstrumentor::VERSION
   spec.authors       = ["Rajdeep Varma"]
   spec.email         = ["mail.rajvarma@gmail.com"]
