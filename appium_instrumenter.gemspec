@@ -10,9 +10,10 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Rajdeep Varma"]
   spec.email         = ["mail.rajvarma@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
-  spec.homepage      = "https://github.com/rajdeepv/"
+  spec.summary       = %q{Part of calabash-android ruby gem to instrument and resign apk}
+  spec.description   = %q{Part of calabash-android ruby gem to instrument and resign apk.
+This will modify appium uiautomator2 server apk so that it instruments app under test.}
+  spec.homepage      = "https://github.com/rajdeepv/appium_instrumenter"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
