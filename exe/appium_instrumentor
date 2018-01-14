@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+
+require "appium_instrumentor"
+
+
+def print_usage
+  puts "appium_instrumentor instrument <appium-server-apk-path> <app_under_test_path>"
+  puts "OR"
+  puts "appium_instrumentor resign <apk-path>"
+end
+
+def is_apk_file?(file_path)
+  file_path.end_with? ".apk" and File.exist? file_path
+end
+
+def relative_to_full_path(file_path)
+  File.expand_path(file_path)
+end
+
+if ARGV.length == 0
+  print_usage
+else
+  cmd = ARGV.shift
+  case cmd
+    when 'instrument'
+      app_to_instrument = ARGV[0]
+      app_under_test = ARGV[1]
+      if ARGV.size < 2
+        puts "Please see usage below. Specify two arguments"
+        print_usage
+      elsif !File.exist?(app_to_instrument)
+        puts "Could not find file '#{app_to_instrument}'"
+        exit 1
+      elsif !is_apk_file?(app_to_instrument)
+        puts "'#{app_to_instrument}' is not a valid android application"
+        exit 1
+      elsif !File.exist?(app_under_test)
+        puts "Could not find file '#{app_under_test}'"
+        exit 1
+      elsif !is_apk_file?(app_under_test)
+        puts "'#{app_under_test}' is not a valid android application"
+        exit 1
+      else
+        app_to_instrument_path = relative_to_full_path(app_to_instrument)
+        app_under_test_path = relative_to_full_path(app_under_test)
+        AppiumInstrumentor.instrument(app_to_instrument_path,app_under_test_path)
+      end
+
+    when 'resign'
+      app_to_resign = ARGV[0]
+      fail("Please specify app to sign") unless ARGV[0]
+      AppiumInstrumentor.unsign_and_resign_apk(relative_to_full_path(app_to_resign))
+    else
+      puts "Invalid command '#{cmd}'"
+      print_usage
+  end
+end
