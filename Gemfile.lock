@@ -2,6 +2,9 @@ PATH
   remote: .
   specs:
     appium_instrumenter (0.1.0)
+      escape (~> 0.0.4)
+      luffa
+      rubyzip (~> 1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -44,12 +47,9 @@ PLATFORMS
 DEPENDENCIES
   appium_instrumenter!
   bundler (~> 1.16)
-  escape (~> 0.0.4)
-  luffa
   pry
   rake (~> 10.0)
   rspec (~> 3.0)
-  rubyzip (~> 1.1)
 
 BUNDLED WITH
    1.16.1
