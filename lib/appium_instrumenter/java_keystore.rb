@@ -94,7 +94,7 @@ class JavaKeystore
 
   def self.get_keystores
     if keystore = keystore_from_settings
-      p "found calabash_settings file"
+      p "found keystore_details file"
       [ keystore ]
     else
       [
@@ -107,19 +107,19 @@ class JavaKeystore
   end
 
   def self.keystore_from_settings
-      keystore = JSON.parse(IO.read(".calabash_settings")) if File.exist? ".calabash_settings"
-      keystore = JSON.parse(IO.read("calabash_settings")) if File.exist? "calabash_settings"
+      keystore = JSON.parse(IO.read(".keystore_details")) if File.exist? ".keystore_details"
+      keystore = JSON.parse(IO.read("keystore_details")) if File.exist? "keystore_details"
       return unless keystore
       fail_if_key_missing(keystore, "keystore_location")
       fail_if_key_missing(keystore, "keystore_password")
       fail_if_key_missing(keystore, "keystore_alias")
       keystore["keystore_location"] = File.expand_path(keystore["keystore_location"])
-      log("Keystore location specified in #{File.exist?(".calabash_settings") ? ".calabash_settings" : "calabash_settings"}.")
+      log("Keystore location specified in #{File.exist?(".keystore_details") ? ".keystore_details" : "keystore_details"}.")
       JavaKeystore.new(keystore["keystore_location"], keystore["keystore_alias"], keystore["keystore_password"])
   end
 
   def self.fail_if_key_missing(map, key)
-    raise "Found .calabash_settings but no #{key} defined." unless map[key]
+    raise "Found .keystore_details but no #{key} defined." unless map[key]
   end
 
 end
