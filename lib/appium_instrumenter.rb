@@ -5,6 +5,9 @@ require "appium_instrumenter/java_keystore"
 module AppiumInstrumenter
   def self.instrument(app_under_test)
     test_server_apk = File.join(File.dirname(__FILE__), 'appium_instrumenter/resources/appium-uiautomator2-server-debug-androidTest.apk')
+    #iornically
+    useless_needed_server_apk = File.join(File.dirname(__FILE__), 'appium_instrumenter/resources/appium-uiautomator2-server-v0.3.0.apk')
+
     apk_fingerprint = fingerprint_from_apk(app_under_test)
     log "#{app_under_test} was signed with a certificate with fingerprint #{apk_fingerprint}"
 
@@ -68,6 +71,7 @@ module AppiumInstrumenter
         raise "Could not sign test server"
       end
     end
+    FileUtils.cp(useless_needed_server_apk, "./test_servers")
     puts "Done signing the test server. Moved it to #{test_server_file_name}"
   end
 
