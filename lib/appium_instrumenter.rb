@@ -3,7 +3,8 @@ require "appium_instrumenter/helpers"
 require "appium_instrumenter/java_keystore"
 
 module AppiumInstrumenter
-  def self.instrument(test_server_apk, app_under_test)
+  def self.instrument(app_under_test)
+    test_server_apk = File.join(File.dirname(__FILE__), 'appium_instrumenter/resources/appium-uiautomator2-server-debug-androidTest.apk')
     apk_fingerprint = fingerprint_from_apk(app_under_test)
     log "#{app_under_test} was signed with a certificate with fingerprint #{apk_fingerprint}"
 

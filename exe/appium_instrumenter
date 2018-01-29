@@ -4,7 +4,7 @@ require "appium_instrumenter"
 
 
 def print_usage
-  puts "appium_instrumenter instrument <appium-server-apk-path> <app_under_test_path>"
+  puts "appium_instrumenter instrument <app_under_test_path>"
   puts "OR"
   puts "appium_instrumenter resign <apk-path>"
 end
@@ -23,27 +23,16 @@ else
   cmd = ARGV.shift
   case cmd
     when 'instrument'
-      app_to_instrument = ARGV[0]
-      app_under_test = ARGV[1]
-      if ARGV.size < 2
-        puts "Please see usage below. Specify two arguments"
-        print_usage
-      elsif !File.exist?(app_to_instrument)
-        puts "Could not find file '#{app_to_instrument}'"
-        exit 1
-      elsif !is_apk_file?(app_to_instrument)
-        puts "'#{app_to_instrument}' is not a valid android application"
-        exit 1
-      elsif !File.exist?(app_under_test)
+      app_under_test = ARGV[0]
+      if !File.exist?(app_under_test)
         puts "Could not find file '#{app_under_test}'"
         exit 1
       elsif !is_apk_file?(app_under_test)
         puts "'#{app_under_test}' is not a valid android application"
         exit 1
       else
-        app_to_instrument_path = relative_to_full_path(app_to_instrument)
         app_under_test_path = relative_to_full_path(app_under_test)
-        AppiumInstrumenter.instrument(app_to_instrument_path, app_under_test_path)
+        AppiumInstrumenter.instrument(app_under_test_path)
       end
 
     when 'resign'

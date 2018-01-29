@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    appium_instrumenter (0.1.0)
+    appium_instrumenter (0.1.2)
       escape (~> 0.0.4)
       luffa
       rubyzip (~> 1.1)
