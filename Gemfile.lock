@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    appium_instrumenter (0.1.2)
+    appium_instrumenter (0.1.5)
       escape (~> 0.0.4)
       luffa
       rubyzip (~> 1.1)
@@ -38,8 +38,8 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
-    rubyzip (1.2.1)
-    thor (0.20.0)
+    rubyzip (1.2.2)
+    thor (0.20.3)
 
 PLATFORMS
   ruby
