@@ -37,6 +37,6 @@ This will modify appium uiautomator2 server apk so that it instruments app under
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "pry"
   spec.add_dependency( 'luffa' )
-  spec.add_dependency( "rubyzip", "~> 1.1" )
+  spec.add_dependency( "rubyzip", ">= 1.1", "< 3.0" )
   spec.add_dependency( 'escape', '~> 0.0.4')
 end
